@@ -1,128 +1,67 @@
-# Node.js TypeScript Template
+#### This project was created using [themetalfleece/nodejs-typescript-template](https://github.com/themetalfleece/nodejs-typescript-template)
 
-[![Package Version][package-image]][package-url]
-[![Dependencies Status][dependencies-image]][dependencies-url]
-[![Build Status][build-image]][build-url]
-[![Coverage Status][coverage-image]][coverage-url]
-[![Open Issues][issues-image]][issues-url]
-[![Commitizen Friendly][commitizen-image]][commitizen-url]
+# This template gets updated daily so the latest dependencies are always used!
 
-A complete Node.js project template using TypeScript and following general best practices.  It allows you to skip the tedious details for the following:
+## What to do after using this template
 
-* Adding and configuring TypeScript support.
-* Enabling TypeScript linting.
-* Setting up unit tests and code coverage reports.
-* Creating an NPM package for your project.
-* Managing ignored files for Git and NPM.
+1. Edit `package.json` to set the project name, version, description, and author.
+2. Edit the `LICENSE` file to use your name in the Copyright section.
+3. Edit the `.prettierrc.json` file with your preferred values.
+4. Remove the `.github/workflows/upgrade-dependencies.yml` files, since it contains the workflow to upgrade all dependencies on a daily basis.
+   * In case you would like to keep it, remove lines 7, 30, 32 from it. Also, change the git user name in line 28.
+5. Delete this section from the `README.md` file.
+6. Start coding by editing the `src/app.ts` file!
 
-Once you've enabled CI, test coverage, and dependency reports for your project, this README.md file shows how to add the badges shown above.  This project template even enables automated changelog generation as long as you follow [Conventional Commits](https://conventionalcommits.org), which is made simple through the included [Commitizen CLI](http://commitizen.github.io/cz-cli/).
+## Install
 
-## Contents
+1. Install [node.js](https://nodejs.org/en/download/), [yarn](https://yarnpkg.com/getting-started/install) (or use npm).
+2. Clone this repository, and using a terminal navigate to its directory.
+3. Run `yarn` or `npm install` to install the dependencies.
 
-* [Project Creation](#project-creation)
-* [Rebranding](#rebranding)
-* [Managing Your Project](#managing-your-project)
-    * [Initial Publish](#initial-publish)
-    * [Recommended Development Workflow](#recommended-development-workflow)
-    * [Publishing to NPMJS](#publishing-to-npmjs)
-* [Contributing](#contributing)
+## Build & Run
 
-## Project Creation
+1. Copy the contents of the `.env.example` file to a `.env` next to it, and edit it with your values.
+2. Run `yarn build` or `npm build` to build the files.
+3. Run `yarn start` or `npm start` to start the application.
 
-Clone this repo into the directory you want to use for your new project, delete the Git history, and then reinit as a fresh Git repo:
+-   You can run `yarn dev` or `npm dev` to combine the 2 steps above, while listening to changes and restarting automatically.
 
-```bash
-$ git clone https://github.com/chriswells0/node-typescript-template.git <your project directory>
-$ cd <your project directory>
-$ rm -rf ./.git/
-$ git init
-$ npm install
-```
+## Run with Docker
 
-## Rebranding
+1. Build:
 
-It's a common practice to prefix the source code project name with `node-` to make it clear on GitHub that it's a Node.js project while omitting that prefix in the NPM project since it's understood on npmjs.com.  Thus, the order of these replacements matter.
+    ```
+    docker build -t my-app .
+    ```
 
-Be sure to check both [GitHub](https://github.com) and [NPMJS](https://www.npmjs.com) to verify that your project name isn't taken before starting!
+    Replacing `my-app` with the image name.
 
-Use exact searches to perform the following replacements throughout this project for the most efficient rebranding process:
+2. Run
+    ```
+    docker run -d -p 3000:3000 my-app
+    ```
+    Replacing `my-app` with the image name, and `3000:3000` with the `host:container` ports to publish.
 
-1. Replace my name with yours: `Chris Wells`
-2. Replace my website URL with yours: `https://chriswells.io`
-3. Replace my *GitHub* username and project name with yours: `chriswells0/node-typescript-template`
-4. Replace my *NPM* project name with yours: `typescript-template`
-5. Update [package.json](package.json):
-	* Change `description` to suit your project.
-	* Update the `keywords` list.
-	* In the `author` section, add `email` if you want to include yours.
-6. If you prefer something other than the [BSD 3-Clause License](https://opensource.org/licenses/BSD-3-Clause), replace the entire contents of [LICENSE](LICENSE) as appropriate.
-7. Update this README.md file to describe your project.
+## Developing
 
-## Managing Your Project
+### Visual Studio Code
 
-Before committing to a project based on this template, it's recommended that you read about [Conventional Commits](https://conventionalcommits.org) and install [Commitizen CLI](http://commitizen.github.io/cz-cli/) globally.
+-   Installing the Eslint (`dbaeumer.vscode-eslint`) and Prettier - Code formatter (`esbenp.prettier-vscode`) extensions is recommended.
 
-### Initial Publish
+## Linting & Formatting
 
-Some additional steps need to be performed for a new project.  Specifically, you'll need to:
+-   Run `yarn lint` or `npm lint` to lint the code.
+-   Run `yarn format` or `npm format` to format the code.
 
-1. Create your project on GitHub (do not add a README, .gitignore, or license).
-2. Add the initial files to the repo:
-```bash
-$ git add .
-$ git cz
-$ git remote add origin git@github.com:<your GitHub username>/<your project name>
-$ git push -u origin master
-```
-3. Create accounts on the following sites and add your new GitHub project to them.  The project is preconfigured, so it should "just work" with these tools.
-	* GitHub Actions for continuous integration.
-	* [Coveralls](https://coveralls.io) for unit test coverage verification.
-4. Check the "Actions" tab on the GitHub repo and wait for the Node.js CI build to complete.
-5. Publish your package to NPMJS: `npm publish`
+## Testing
 
-### Development Workflow
+Check the placeholder test examples to get started : 
 
-#### Hot reload
-Run `npm run serve` to start your development workflow with hot reload.
+- `/src/app.ts` that provide a function `sum` 
+- `/test/app.spec.ts` who test the `sum` function 
 
-#### Build, test, deploy
+This files are just an example, feel free to remove it
 
-These steps need to be performed whenever you make changes:
-
-0. Write awesome code in the `src` directory.
-1. Build (clean, lint, and transpile): `npm run build`
-2. Create unit tests in the `test` directory.  If your code is not awesome, you may have to fix some things here.
-3. Verify code coverage: `npm run cover:check`
-4. Commit your changes using `git add` and `git cz`
-5. Push to GitHub using `git push` and wait for the CI builds to complete.  Again, success depends upon the awesomeness of your code.
-
-### NPMJS Updates
-
-Follow these steps to update your NPM package:
-
-0. Perform all development workflow steps including pushing to GitHub in order to verify the CI builds.  You don't want to publish a broken package!
-1. Check to see if this qualifies as a major, minor, or patch release: `npm run changelog:unreleased`
-2. Bump the NPM version following [Semantic Versioning](https://semver.org) by using **one** of these approaches:
-	* Specify major, minor, or patch and let NPM bump it: `npm version [major | minor | patch] -m "chore(release): Bump version to %s."`
-	* Explicitly provide the version number such as 1.0.0: `npm version 1.0.0 -m "chore(release): Bump version to %s."`
-3. The push to GitHub is automated, so wait for the CI builds to finish.
-4. Publishing the new version to NPMJS is also automated, but you must create a secret named `NPM_TOKEN` on your project.
-5. Manually create a new release in GitHub based on the automatically created tag.
-
-## Contributing
-
-This section is here as a reminder for you to explain to your users how to contribute to the projects you create from this template.
-
-[build-image]: https://img.shields.io/github/actions/workflow/status/chriswells0/node-typescript-template/ci-build.yaml?branch=master
-[build-url]: https://github.com/chriswells0/node-typescript-template/actions/workflows/ci-build.yaml
-[commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[commitizen-url]: http://commitizen.github.io/cz-cli
-[coverage-image]: https://coveralls.io/repos/github/chriswells0/node-typescript-template/badge.svg?branch=master
-[coverage-url]: https://coveralls.io/github/chriswells0/node-typescript-template?branch=master
-[dependencies-image]: https://img.shields.io/librariesio/release/npm/typescript-template
-[dependencies-url]: https://www.npmjs.com/package/typescript-template?activeTab=dependencies
-[issues-image]: https://img.shields.io/github/issues/chriswells0/node-typescript-template.svg?style=popout
-[issues-url]: https://github.com/chriswells0/node-typescript-template/issues
-[package-image]: https://img.shields.io/npm/v/typescript-template
-[package-url]: https://www.npmjs.com/package/typescript-template
-[project-url]: https://github.com/chriswells0/node-typescript-template
+-   Run `yarn test` or `npm test` to execute all tests.
+-   Run `yarn test:watch` or `npm test:watch` to run tests in watch (loop) mode.
+-   Run `yarn test:coverage` or `npm test:coverage` to see the tests coverage report.
