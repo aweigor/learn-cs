@@ -1,0 +1,23 @@
+import graphviz
+
+def graph1():
+    f = graphviz.Digraph('finite_state_machine', filename='fsm.gv')
+    f.attr(rankdir='LR', size='8,5')
+    f.attr('node', shape='circle')
+    f.edge('q1', 'q2', label='a/0')
+    f.edge('q1', 'q3', label='b/0')
+    f.edge('q2', 'q4', label='a/0')
+    f.edge('q2', 'q5', label='b/0')
+    f.edge('q3', 'q5', label='a/0')
+    f.edge('q3', 'q1', label='b/1')
+    f.edge('q4', 'q6', label='a/0')
+    f.edge('q4', 'q3', label='b/1')
+    f.edge('q5', 'q7', label='a/0')
+    f.edge('q5', 'q2', label='b/1')
+    f.edge('q6', 'q1', label='a/1')
+    f.edge('q6', 'q5', label='b/1')
+    f.edge('q7', 'q8', label='a/0')
+    f.edge('q7', 'q4', label='b/1')
+    f.edge('q8', 'q3', label='a/1')
+    f.edge('q8', 'q6', label='b/1')
+    f.view()
